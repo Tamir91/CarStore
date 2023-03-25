@@ -1,0 +1,102 @@
+//add engines
+addEngine 111 5000 Germany Black 10000 Hybride 1.6 0
+addEngine 222 5000 Germany Black 10000 Hybride 1.6 0
+addEngine 333 5000 Germany Black 10000 Fuel 2.0 0
+addEngine 444 10000 Germany Black 10000 Fuel 2.0 0
+addEngine 555 10000 Germany Black 5000 Electric 2.0 0
+addEngine 666 10000 Germany Black 5000 Electric 3.0 0
+addEngine 777 20000 Germany Black 5000 Turbo 1.4 1
+
+//add ShiftGear
+addShiftGear 1 5000 Germany Black 1000 Auto
+addShiftGear 2 5000 Germany Black 1000 Auto
+addShiftGear 3 5000 Germany Black 1000 Auto
+addShiftGear 4 10000 Germany Blue 1000 Manual
+addShiftGear 5 10000 Germany Pink 500 Manual
+addShiftGear 6 10000 Germany Black 500 Manual
+addShiftGear 7 20000 Germany Red 500 Auto Red
+
+//add Steering Wheel
+addSteeringWheel 11 5000 Germany Black 1000 A
+addSteeringWheel 22 5000 Germany Black 1000 A
+addSteeringWheel 33 5000 Germany Black 1000 A
+addSteeringWheel 44 10000 Germany Blue 1000 A
+addSteeringWheel 55 10000 Germany Pink 5000 B
+addSteeringWheel 66 10000 Germany Black 5000 B
+addSteeringWheel 77 20000 Germany Red 5000 B
+
+//add wheel
+addWheel 1111 5000 Germany Black 1000 30 3
+addWheel 2222 5000 Germany Black 1000 30 4
+addWheel 3333 5000 Germany Black 1000 30 5
+addWheel 4444 10000 Germany Blue 1000 30 6
+addWheel 5555 10000 Germany Pink 500 28 5
+addWheel 6666 10000 Germany Black 500 32 4
+addWheel 7777 20000 Germany Red 500 34 3
+
+
+//add regular cars
+addRegularCar 11111 Mazda 3 Green 10-10-2020 Japan 2019 400 4 5 35 111 1 11 1111 1111 1111 1111
+addRegularCar 22222 Toyota yaris Red 10-10-2020 Japan 2019 400 4 5 35 111 1 11 1111 1111 1111 1111
+addRegularCar 33333 Ford focus Green 10-10-2020 USA 2019 400 4 5 35 222 1 11 1111 1111 1111 1111
+addRegularCar 44444 Opel astra Green 10-10-2020 Germany 2019 400 4 5 35 222 1 11 1111 1111 1111 1111 
+addRegularCar 55555 Opel corsa Red 10-10-2020 Germany 2019 400 4 5 35 333 2 33 2222 2222 2222 2222
+addRegularCar 66666 Mazda 2 Red 10-10-2020 Japan 2019 400 4 5 35 1 1 1 1 1 1 1 
+addRegularCar 77777 Toyota prius Blue 10-10-2020 Japan 2018 350 4 5 34 1 1 1 1 1 1 1
+addRegularCar 88888 Opel corsa Black 10-10-2020 Germany 2018 350 5 5 34 1 1 1 1 1 1 1 
+addRegularCar 99999 Opel adam White 10-10-2020 Germany 2018 350 4 5 34 222 1 11 1111 1111 1111 1111
+addRegularCar 10101 Opel vectra Black 10-10-2020 Germany 2019 350 5 5 34 222 1 11 1111 1111 1111 1111
+addRegularCar 10102 Opel vectra Black 10-10-2020 Germany 2019 350 5 5 34 222 1 11 1111 1111 1111 1111
+ 
+ 
+//add mini cars   
+addMiniCar 11112 Mazda 2 Green 10-10-2020 Japan 2018 300 5 4 32 A 111 1 11 1111 1111 1111 1111
+addMiniCar 11113 Toyota corola Green 10-10-2020 Japan 2019 300 4 4 28 A 111 1 11 1111 1111 1111 1111
+addMiniCar 11114 Ford fiesta Red 10-10-2020 USA 2018 200 4 4 32 B 111 1 11 1111 1111 1111 1111
+addMiniCar 11115 Mazda 3 Red 10-10-2020 Japan 2019 320 4 4 32 B 111 1 11 1111 1111 1111 1111
+addMiniCar 11116 Toyota yaris White 10-10-2020 Japan 2019 350 4 4 32 C 1 1 1 1111 1111 1111 1
+addMiniCar 11117 Mazda 3 Green 10-10-2020 Japan 2018 360 3 4 32 C 111 1 11 1111 1111 1111 1111
+addMiniCar 11118 Toyota yaris Red 10-10-2020 Japan 2019 330 4 4 32 222 1 11 1111 1111 1111 1111
+addMiniCar 11119 Mazda 3 White 10-10-2020 Japan 2019 380 4 4 32 B 222 1 11 1111 1111 1111 1111
+addMiniCar 11110 Toyota yaris Red 10-10-2020 Japan 2018 330 4 4 32 C 222 1 11 1111 1111 1111 1111
+addMiniCar 11100 Toyota yaris Red 10-10-2020 Japan 2018 330 4 4 32 C 222 1 11 1111 1111 1111 1111
+
+//add sport cars 
+addSportCar 22221 Ford fiesta-Rx Black 10-11-2020 USA 2020 250 5 2 42 1 1 1 111 1 11 1111 1111 1111 1111
+addSportCar 22223 Mazda cx-3x White 10-11-2020 Japan 2020 250 5 2 42 1 1 1 111 1 11 1111 1111 1111 1111
+addSportCar 22224 Ford mondeo-Rx Red 10-11-2020 USA 2018 220 5 2 42 1 1 1 111 1 11 1111 1111 1111 1111
+addSportCar 22225 Mazda cx-5 Green 10-11-2020 Japan 2018 330 5 2 42 1 1 1 111 1 11 1111 1111 1111 1111
+addSportCar 22226 Opel corsa White 10-11-2020 Germany 2018 330 5 2 42 1 1 1 111 1 11 1111 1111 1111 1111
+addSportCar 22227 Mazda mx-5 Black 10-11-2020 Japan 2018 350 5 2 42 1 1 1 111 1 11 1111 1111 1111 1111
+addSportCar 22228 Toyota rx-5 Red 10-11-2020 Japan 2018 450 5 2 33 1 0 1 111 1 11 1111 1111 1111 1111
+addSportCar 22229 Ford rx-3 Green 10-11-2020 USA 2020 460 5 2 33 1 0 1 111 1 11 1111 1111 1111 1111
+addSportCar 33331 Mazda mx-3 White 10-11-2020 Japan 2020 480 4 2 33 1 0 1 111 1 11 1111 1111 1111 1111
+addSportCar 33332 Toyota nx-4 Red 10-11-2020 Japan 2020 550 4 2 36 0 0 1 111 1 11 1111 1111 1111 1111
+addSportCar 33334 Opel fx-1 White 10-11-2020 Germany 2020 600 3 4 38 1 0 0 0 1 11 1111 1111 1111 1111
+addSportCar 33335 Opel fx-3 Green 10-11-2020 Germany 2020 450 2 4 40 0 1 0 0 1 11 1111 1111 1111 1111
+
+//add car to customer
+addCarToCustomer 111111111 11111
+addCarToCustomer 111111112 22222
+addCarToCustomer 111111113 33333
+addCarToCustomer 111111114 44444
+addCarToCustomer 111111115 55555
+addCarToCustomer 111111116 66666
+addCarToCustomer 111111117 77777
+addCarToCustomer 111111111 88888
+addCarToCustomer 111111112 99999
+addCarToCustomer 111111113 11112
+addCarToCustomer 111111114 11113
+addCarToCustomer 111111115 11113
+addCarToCustomer 111111116 11114
+addCarToCustomer 111111117 11115
+addCarToCustomer 111111111 22225
+addCarToCustomer 111111112 22226
+addCarToCustomer 111111111 22227
+addCarToCustomer 111111111 22229
+addCarToCustomer 111111111 22231
+addCarToCustomer 111111111 22232
+addCarToCustomer 111111111 12345
+
+
+

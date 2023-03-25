@@ -1,0 +1,55 @@
+Car : 66666 Isn't Ready , Some Parts Are Missing
+Car : 77777 Isn't Ready , Some Parts Are Missing
+Car : 88888 Isn't Ready , Some Parts Are Missing
+Car : 11116 Isn't Ready , Some Parts Are Missing
+Car : 11118 Isn't Ready , Some Parts Are Missing
+Car : 33334 Isn't Ready , Some Parts Are Missing
+Car : 33335 Isn't Ready , Some Parts Are Missing
+Successfully Removed Car : 10101 from system
+Failed To Remove Car : 10101 from system => Car Not Exist In System
+Cars Sorted By Car's Price Asc : 
+Opel 10102 43000.0
+Mazda 11117 43000.0
+Toyota 11110 43000.0
+Toyota 11100 43000.0
+Toyota 22228 137500.0
+Mazda 33331 137500.0
+Toyota 33332 137500.0
+Ford 22221 147500.0
+Mazda 22223 147500.0
+Ford 22224 147500.0
+
+Customer That Payed Most Money For Cars : 
+Customer : 111111111
+Name : roni g
+E-mail : ronig@mail.com 
+Number Of Cars : 4
+Cars Price : 475500.0
+
+Licence Plate : 10102
+Car Model : Opel
+Sub Model : vectra
+color : Black
+Manufacture Country : Germany
+Model Year : 2019
+Cost For Moving To Store ? : 43.0
+Trade ? : true
+Trailer Is Availiable ? : true
+
+Licence Plate : 11117
+Car Model : Mazda
+Sub Model : 3
+color : Green
+Manufacture Country : Japan
+Model Year : 2018
+Cost For Moving To Store ? : 21.308225966303272
+Trade ? : false
+Trailer Is Availiable ? : false
+
+
+[End Of process]
+
+ NOTICE:
+	"End of process" does NOT mean that all your methods are correct.
+
+==>	 You NEED to check the "output.txt" file
