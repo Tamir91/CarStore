@@ -1,0 +1,2 @@
+# CarStore
+- [x] calcPrice()
