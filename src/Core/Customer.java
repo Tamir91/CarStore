@@ -2,7 +2,6 @@ package Core;
 
 import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 public class Customer {
     private String idNumber;
@@ -11,7 +10,7 @@ public class Customer {
     private String city;
     private String email;
 
-    private HashSet<Car> customer_cars;
+    private HashSet<Car> customerCars;
 
     /**
      * Constructor with customer ID only
@@ -19,7 +18,7 @@ public class Customer {
      */
     public Customer(String idNumber) {
         this.idNumber = idNumber;
-        customer_cars = new HashSet<>();
+        customerCars = new HashSet<>();
     }
 
     /**
@@ -36,7 +35,7 @@ public class Customer {
         this.lName = lName;
         this.city = city;
         this.email = email;
-        customer_cars = new HashSet<>();
+        customerCars = new HashSet<>();
     }
 
     // *****************************************************************************************************************
@@ -112,14 +111,14 @@ public class Customer {
     }
 
     /**
-     * This function adding car to customer owning cars.
+     * This function add car to customer owning cars.
      * @param c new customer car
      * @return true if added otherwise false
      */
     public boolean addCarToCustomer(Car c) {
-//        if (customer_cars != null && c != null)
-//            if (!customer_cars.contains(c) && )
-            // TODO remove car from store
+        if (customerCars != null && c != null)
+            return customerCars.add(c);
+
         return false;
     }
 
@@ -129,8 +128,8 @@ public class Customer {
      * @return true if car removed otherwise false
      */
     public boolean removeCarFromCustomer(Car c) {
-        if (customer_cars != null && c != null)
-            return customer_cars.remove(c);
+        if (customerCars != null && c != null)
+            return customerCars.remove(c);
 
         return false;
     }

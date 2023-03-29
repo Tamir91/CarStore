@@ -190,10 +190,10 @@ public class Store {
 	}
 
 	/**
-	 *
-	 * @param licencePlateSerial
-	 * @param customerId
-	 * @return
+	 * This function add car to customer and remove it from store
+	 * @param licencePlateSerial - car licence plate number
+	 * @param customerId - customer ID
+	 * @return true if car was added otherwise false
 	 */
 	public boolean addCarToCustomer(String licencePlateSerial,String customerId) {
 		boolean isCarAdded = false;
@@ -233,6 +233,8 @@ public class Store {
 		}
 		return null;
 	}
+
+	
 
 	/*-----------------------------------------------Queries----------------------------------------------------*/
 

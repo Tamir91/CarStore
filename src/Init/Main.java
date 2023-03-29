@@ -9,15 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.TimeZone;
-import Core.SpecialException;
-import Core.Car;
-import Core.Engine;
-import Core.MiniCar;
-import Core.RegularCar;
-import Core.ShiftGearBox;
-import Core.SportCar;
-import Core.SteeringWheel;
-import Core.Store;
+
+import Core.*;
 import Utilities.E_CarModel;
 import Utilities.E_Color;
 import Utilities.E_EngineType;
