@@ -1,10 +1,11 @@
 package Core;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import Utilities.E_Color;
 
-public abstract class ItemPart {
+public abstract class ItemPart implements Serializable {
 
 	protected String serialNumber;
 	
@@ -24,11 +25,9 @@ public abstract class ItemPart {
 		this.weight = weight;
 	}
 
-	
 	public ItemPart(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -52,7 +51,4 @@ public abstract class ItemPart {
 		return "ItemPart [serialNumber=" + serialNumber + ", price=" + price + ", manufactureCountry="
 				+ manufactureCountry + ", color=" + color + ", weight=" + weight + "]";
 	}
-	
-	
-	
 }

@@ -1,6 +1,10 @@
 package Core;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Store {
 
@@ -64,9 +68,6 @@ public class Store {
 	public void setCustomers(Customer[] customers) {
 		this.customers = customers;
 	}
-
-
-
 
 	/*---------------------------------------------------Methods----------------------------------------------------*/
 
@@ -184,9 +185,67 @@ public class Store {
 		return false;
 	}
 
+	// This function read customer strings information from file and add customers to store.
 	public void getCustomersFromTextFile(String fileName) {
-		
+		String line = "";
+		BufferedReader inFile = null;
+		Path path = Paths.get(fileName);
 
+		if (Files.exists(path)) {
+			File f = new File(fileName);
+
+			if (f.isFile() && customers != null) {
+				try {
+					inFile = new BufferedReader(new FileReader(fileName));
+				} catch (FileNotFoundException e) {
+					throw new RuntimeException(e);
+				}
+
+				while (true) {
+					try {
+						if ((line = inFile.readLine()) == null) break;
+					} catch (IOException e) {
+						throw new RuntimeException(e);
+					}
+					addCustomerToStore(createCustomerFromString(line));
+				}
+			}
+		}
+	}
+
+	// This function building and returned customer object from string.
+	private Customer createCustomerFromString(String str) {
+		String id, firstName, lastName, city, email;
+		StringTokenizer st;
+
+		st = new StringTokenizer(str);
+
+		if (st.hasMoreTokens())
+			id = st.nextToken();
+		else
+			id = "NOT_ID";
+
+		if (st.hasMoreTokens())
+			firstName = st.nextToken();
+		else
+			firstName = "NOT_FIRST_NAME";
+
+		if (st.hasMoreTokens())
+			lastName = st.nextToken();
+		else
+			lastName = "NOT_LAST_NAME";
+
+		if (st.hasMoreTokens())
+			city = st.nextToken();
+		else
+			city = "NOT_CITY";
+
+		if (st.hasMoreTokens())
+			email = st.nextToken();
+		else
+			email = "NOT_EMAIL";
+
+		return new Customer(id, firstName, lastName, city, email);
 	}
 
 	/**
@@ -197,6 +256,7 @@ public class Store {
 	 */
 	public boolean addCarToCustomer(String licencePlateSerial,String customerId) {
 		boolean isCarAdded = false;
+
 		Car car = getCar(licencePlateSerial);
 		Customer customer = getCustomer(customerId);
 
@@ -234,20 +294,212 @@ public class Store {
 		return null;
 	}
 
-	
-
 	/*-----------------------------------------------Queries----------------------------------------------------*/
 
-
+	/**
+	 * This function write sorted cars by they price into file
+	 * @return new sorted list of cars
+	 */
 	public ArrayList<Car> sortAllCarsByPricesAsc(){
-		
+		ArrayList<Car> sortedCars = null;
+
+		if (cars != null) {
+			sortedCars = new ArrayList<>(cars);
+
+			Collections.sort(sortedCars);
+		}
+
+		writeCarsToFile(sortedCars, "qry.txt");
+		return sortedCars;
 	}
 
+	private void writeCarsToFile(ArrayList<Car> cars, String fileName) {
+		Formatter formatter;
+
+		formatter = openFile(fileName);
+		writeArrayList(formatter, cars);
+		closeFile(formatter);
+	}
+
+	// This function open file for writing.
+	private Formatter openFile(String fileName) {
+		Formatter formatter = null;
+
+		try {
+			formatter = new Formatter(fileName);
+		} catch (SecurityException e) {
+			System.out.println("Permission denied.");
+		} catch (FileNotFoundException e) {
+			System.out.println("Error opening file.");
+			System.exit(1);
+		}
+
+		return formatter;
+	}
+
+	// This function write formatted data to file.
+	private void writeArrayList(Formatter output, ArrayList<Car> cars) {
+		if (cars != null && output != null) {
+			for (Car c : cars) {
+				try {
+
+					String format = """
+							Licence Plate : %s
+							Car Model : %s
+							Sub Model : %s
+							color : %s
+							Manufacture Country : %s
+							Model Year : %d
+							Car Length : %.2f
+							Car Weight : %.2f
+							Max Seats : %d,
+							Wheels Air Volume : %.2f
+							
+							""";
+					output.format(format,
+							c.getLicencePlateSerial(),
+							c.getCarModel(),
+							c.getSubModel(),
+							c.getColor(),
+							c.getManufactureCountry(),
+							c.getModelYear(),
+							c.getCarLength(),
+							c.getCarWeight(),
+							c.getMaxSeats(),
+							c.getWheelsAirVolume());
+
+				} catch (FormatterClosedException e) {
+					System.err.println(e.getMessage());
+					break;
+				}
+			}
+		}
+	}
+
+	private void closeFile(Formatter f) {
+		if (f != null)
+			f.close();
+	}
+
+	/**
+	 * This function save cars to file that manufactured in specific month
+	 * @param month of manufacture
+	 */
 	public void saveCarsToCSFileByMonthOfProduction(int month) {
+		ArrayList<Car> carsInMonth = new ArrayList<>();
+		int carMonth;
 
+		if (cars != null && 1 <= month && month <= 12 ) {
+			for (Car c : cars) {
+
+				carMonth = c.getManufactureDate().getMonth() + 1;
+				// getMonth() returned number in range from 0 to 11, so we need + 1.
+				if (c.getManufactureDate() != null && carMonth == month) {
+					carsInMonth.add(c);
+				}
+			}
+		}
+
+		writeToFile(carsInMonth, "save.bin");
 	}
 
-	public String getCustomerPayedMostMoney() throws SpecialException {
-		
+	// This function write cars to binary file.
+	private void writeToFile(ArrayList<Car> cars, String fileName) {
+		ObjectOutputStream out = openBinaryFileToWrite(fileName);
+
+		if (out != null && cars != null) {
+			for (Car c : cars) {
+				if (c != null) {
+					try {
+						out.writeObject(c);
+					} catch (IOException e) {
+						throw new RuntimeException(e);
+					}
+				}
+			}
+		}
+
+		closeBinaryFile(out);
+	}
+
+	// This function return pointer to writable binary file.
+	private ObjectOutputStream openBinaryFileToWrite(String fileName) {
+		FileOutputStream fileOutputStream;
+		ObjectOutputStream out;
+
+		try {
+			fileOutputStream = new FileOutputStream(fileName);
+			out = new ObjectOutputStream(fileOutputStream);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		return out;
+	}
+
+	// This function close file.
+	private void closeBinaryFile(ObjectOutputStream stream) {
+		if (stream != null) {
+			try {
+				stream.close();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public String getCustomerPayedMostMoney() {
+		Customer customerPayedMostMoney = null;
+		double tempPriceOfAllCars = 0.;
+		double maxPriceOfAllCars = 0.;
+
+		if (customers != null) {
+			for (Customer c : customers) {
+				if (c != null) {
+					tempPriceOfAllCars = getTotalPriceOfCars(c);
+
+					if (tempPriceOfAllCars > maxPriceOfAllCars) {
+						maxPriceOfAllCars = tempPriceOfAllCars;
+						customerPayedMostMoney = c;
+					}
+				}
+			}
+		}
+
+		if (customerPayedMostMoney != null)
+			return customerPayedMostMoney + "\n" +
+					"Number Of Cars : " + customerPayedMostMoney.getCarsBought().size() + "\n" +
+					"Cars Price : " + maxPriceOfAllCars;
+		else
+			return "Not found a customer Payed Most Money";
+	}
+
+	// This function return total price of all customer cars.
+	private double getTotalPriceOfCars(Customer c) {
+		double priceOfAllCars = 0.;
+		HashSet<Car> cars;
+
+		if (c != null) {
+			cars = c.getCarsBought();
+
+			if (cars == null)
+				return priceOfAllCars;
+
+			for (Car car : cars) {
+				if (car != null) {
+					try {
+						priceOfAllCars += car.calcCarPrice();
+					} catch (SpecialException e) {
+						System.out.println(e.getMessage());
+					}
+				}
+			}
+		}
+
+		return priceOfAllCars;
 	}
 }

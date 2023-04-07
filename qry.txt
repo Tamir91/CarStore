@@ -1,0 +1,110 @@
+Licence Plate : 10102
+Car Model : Opel
+Sub Model : vectra
+color : Black
+Manufacture Country : Germany
+Model Year : 2019
+Car Length : 350.00
+Car Weight : 5.00
+Max Seats : 5,
+Wheels Air Volume : 34.00
+
+Licence Plate : 11117
+Car Model : Mazda
+Sub Model : 3
+color : Green
+Manufacture Country : Japan
+Model Year : 2018
+Car Length : 360.00
+Car Weight : 3.00
+Max Seats : 4,
+Wheels Air Volume : 32.00
+
+Licence Plate : 11110
+Car Model : Toyota
+Sub Model : yaris
+color : Red
+Manufacture Country : Japan
+Model Year : 2018
+Car Length : 330.00
+Car Weight : 4.00
+Max Seats : 4,
+Wheels Air Volume : 32.00
+
+Licence Plate : 11100
+Car Model : Toyota
+Sub Model : yaris
+color : Red
+Manufacture Country : Japan
+Model Year : 2018
+Car Length : 330.00
+Car Weight : 4.00
+Max Seats : 4,
+Wheels Air Volume : 32.00
+
+Licence Plate : 22228
+Car Model : Toyota
+Sub Model : rx-5
+color : Red
+Manufacture Country : Japan
+Model Year : 2018
+Car Length : 450.00
+Car Weight : 5.00
+Max Seats : 2,
+Wheels Air Volume : 33.00
+
+Licence Plate : 33331
+Car Model : Mazda
+Sub Model : mx-3
+color : White
+Manufacture Country : Japan
+Model Year : 2020
+Car Length : 480.00
+Car Weight : 4.00
+Max Seats : 2,
+Wheels Air Volume : 33.00
+
+Licence Plate : 33332
+Car Model : Toyota
+Sub Model : nx-4
+color : Red
+Manufacture Country : Japan
+Model Year : 2020
+Car Length : 550.00
+Car Weight : 4.00
+Max Seats : 2,
+Wheels Air Volume : 36.00
+
+Licence Plate : 22221
+Car Model : Ford
+Sub Model : fiesta-Rx
+color : Black
+Manufacture Country : USA
+Model Year : 2020
+Car Length : 250.00
+Car Weight : 5.00
+Max Seats : 2,
+Wheels Air Volume : 42.00
+
+Licence Plate : 22223
+Car Model : Mazda
+Sub Model : cx-3x
+color : White
+Manufacture Country : Japan
+Model Year : 2020
+Car Length : 250.00
+Car Weight : 5.00
+Max Seats : 2,
+Wheels Air Volume : 42.00
+
+Licence Plate : 22224
+Car Model : Ford
+Sub Model : mondeo-Rx
+color : Red
+Manufacture Country : USA
+Model Year : 2018
+Car Length : 220.00
+Car Weight : 5.00
+Max Seats : 2,
+Wheels Air Volume : 42.00
+

@@ -62,6 +62,10 @@ public class Customer {
         return email;
     }
 
+    public HashSet<Car> getCarsBought() {
+        return customerCars;
+    }
+
     // *****************************************************************************************************************
     // SETTERS
     // *****************************************************************************************************************
@@ -103,10 +107,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "ID Number : " + idNumber +
-                "First Name : " + fName +
-                "Last Name : " + lName +
-                "City : " + city +
+        return "ID Number : " + idNumber + "\n" +
+                "First Name : " + fName + "\n" +
                 "Email : " + email;
     }
 

@@ -4,11 +4,13 @@ import Core.ItemPart;
 import Utilities.E_CarModel;
 import Utilities.E_Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class Car {
+public abstract class Car implements Comparable<Car>, Serializable {
     protected String licencePlateSerial;
     protected E_CarModel carModel;
     protected String subModel;
@@ -169,18 +171,12 @@ public abstract class Car {
 
     @Override
     public String toString() {
-        return  "License Plate : " + licencePlateSerial +
-                "Car Model : " + carModel +
-                "Sub Model : " + subModel +
-                "color : " + color +
-                "Manufacture Country : " + manufactureCountry +
-                "Manufacture Date : " + manufactureDate +
-                "Model Year : " + modelYear +
-                "Car Length : " + carLength +
-                "Car Weight : " + carWeight +
-                "Max Seats : " + maxSeats +
-                "Wheels Air Volume : " + wheelsAirVolume +
-                "Car Parts : " + carParts;
+        return  "License Plate : " + licencePlateSerial + "\n" +
+                "Car Model : " + carModel + "\n" +
+                "Sub Model : " + subModel + "\n" +
+                "color : " + color + "\n" +
+                "Manufacture Country : " + manufactureCountry + "\n" +
+                "Model Year : " + modelYear;
     }
 
     @Override
@@ -190,9 +186,7 @@ public abstract class Car {
         if (o == null || getClass() != o.getClass())
             return false;
         Car car = (Car) o;
-        return licencePlateSerial.equals(car.licencePlateSerial) &&
-                carModel == car.carModel &&
-                subModel.equals(car.subModel);
+        return licencePlateSerial.equals(car.licencePlateSerial);
     }
 
     @Override
@@ -208,7 +202,7 @@ public abstract class Car {
         double totalPrice = 0;
 
         if (carParts == null || !isCarCompleted())
-            throw new SpecialException("TODO");
+            throw new SpecialException("Car Isn't Ready And Some Parts Are Missing,You need to add the missing parts");
         
         for (ItemPart part : carParts) {
             if (part != null && part.price > 0)
@@ -222,8 +216,7 @@ public abstract class Car {
      // This function calculate additional price for car according to car type.
      // param basePrice - price before additional price.
      // return new price after additions.
-    private double addAdditionPrice(double basePrice)
-    {
+    private double addAdditionPrice(double basePrice) {
         double newPrice = 0;
 
         if (this instanceof MiniCar || this instanceof RegularCar)  {
@@ -242,27 +235,6 @@ public abstract class Car {
 
     // Return true if a car completed otherwise throw ex,
     private boolean isCarCompleted() {
-/*        boolean isSteeringWheelAssembled = false;
-        boolean isEngineAssembled = false;
-        boolean isShiftGearBoxAssembled = false;
-        int numberWheels = 0;
-
-        for (ItemPart part : carParts) {
-            if (part instanceof SteeringWheel)
-                isSteeringWheelAssembled = true;
-            else if (part instanceof Engine)
-                isEngineAssembled = true;
-            else if (part instanceof ShiftGearBox)
-                isShiftGearBoxAssembled = true;
-            else if (part instanceof Wheel)
-                numberWheels++;
-        }
-
-        return isSteeringWheelAssembled &&
-                isEngineAssembled &&
-                isShiftGearBoxAssembled &&
-                numberWheels == 4;*/
-
         return isEngineAssembled() &&
                 isSteeringWheelAssembled() &&
                 isShiftGearBoxAssembled() &&
@@ -357,6 +329,34 @@ public abstract class Car {
         if (carParts == null || item == null)
             return false;
 
-        return carParts.remove(null);
+        return carParts.remove(item);
+    }
+
+    /**
+     * This function comparing cars by their price
+     * @param c the car object to be compared
+     * @return - result of comparing
+     */
+    @Override
+    public int compareTo(Car c) {
+        Double carPrice1 = 0.;
+        double carPrice2 = 0.;
+
+        if (c == null)
+            return -1;
+
+        try {
+            carPrice1 = this.calcCarPrice();
+        } catch (SpecialException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            carPrice2 = c.calcCarPrice();
+        } catch (SpecialException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return carPrice1.compareTo(carPrice2);
     }
 }

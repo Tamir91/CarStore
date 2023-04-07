@@ -49,4 +49,5 @@ public class RegularCar extends Car {
 
         return cost;
     }
+
 }
